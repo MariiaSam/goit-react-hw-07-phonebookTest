@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoaderWrapper = styled.div`
+export const LoaderWrapp = styled.div`
   position: fixed;
   top: 0;
   left: 0;
