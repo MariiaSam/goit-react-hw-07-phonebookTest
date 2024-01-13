@@ -7,20 +7,10 @@ export const ContactList = () => {
   const visibleContacts = useSelector(selectActiveContacts);
 
   return (
-    <>
     <ul>
-    <li>
       {visibleContacts.map(({ id, name, phone }) => (
-      <ContactsElement key={id} name={name} phone={phone} id={id}></ContactsElement>
-      ))
-      
-      }
-    </li>
-
+        <ContactsElement key={id} name={name} phone={phone} id={id} />
+      ))}
     </ul>
-    </>
-    
-    )
-    
-  
+  );
 };
