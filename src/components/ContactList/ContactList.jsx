@@ -1,35 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { useSelector } from 'react-redux';
 import { selectActiveContacts } from '../../redux/selectors';
+import { ContactsElement } from 'components/ContactsElement/ContactsElement';
 
-import {
-  ContactWrap,
-  ContactListItem,
-  ContactListBtn,
-  Span,
-} from './ContactList.styled';
 
 export const ContactList = () => {
-  const activeContacts = useSelector(selectActiveContacts);
-  const dispatch = useDispatch();
+  const visibleContacts = useSelector(selectActiveContacts);
 
   return (
-    <ContactWrap>
-      {activeContacts.map(({ id, name, number }) => {
-        return (
-          <ContactListItem key={id}>
-            <Span>{name}:</Span>
-            <Span>{number}</Span>
+    <>
+    <ul>
+    <li>
+      {visibleContacts.map(({ id, name, phone }) => (
+      <ContactsElement key={id} name={name} phone={phone} id={id}></ContactsElement>
+      ))
+      
+      }
+    </li>
 
-            <ContactListBtn
-              type="button"
-              onClick={() => dispatch(deleteContact(id))}
-            >
-              Delete
-            </ContactListBtn>
-          </ContactListItem>
-        );
-      })}
-    </ContactWrap>
-  );
+    </ul>
+    </>
+    
+    )
+    
+  
 };
