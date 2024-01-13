@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { deleteContact } from '../../redux/contactsOperations';
 import { selectIsDeleting } from '../../redux/selectors';
 
-
 export const ContactsElement = ({ id, name, phone }) => {
   const dispatch = useDispatch();
   const isDeleting = useSelector(selectIsDeleting);
@@ -25,10 +24,11 @@ export const ContactsElement = ({ id, name, phone }) => {
         <button
           type="button"
           disabled={isDeleting}
-          onClick={handleDeleteBtn(id)}
-        ></button>
+          onClick={() => handleDeleteBtn(id)}
+        >
+          {deleteButton}
+        </button>
       </li>
-      {deleteButton}
     </>
   );
 };
